@@ -517,7 +517,7 @@ let spawnWachtrij = [];
 
 
 function setup() {
-	robotGif = loadImage('ranged/ranged0.png');
+	robotGif = loadImage('ranged.gif');
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
 
