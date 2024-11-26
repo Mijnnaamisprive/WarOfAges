@@ -7,7 +7,7 @@ vijandHeavyNummer = 0;
 hoeveelWachtrij = 0;
 vijandHoeveelWachtrij = 0;
 Geld = 500;
-robot = null; //
+robotGif = null; //
 
 class Basis {
 	constructor() {
@@ -516,7 +516,7 @@ let spawnWachtrij = [];
 
 
 function setup() {
-	robot = loadImage('robot.png');
+	robotGif = loadImage('ranged.gif');
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
 
