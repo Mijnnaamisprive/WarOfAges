@@ -297,9 +297,7 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 	}
 
 	plaatsRange() {
-		fill('green');
-		rect(this.x, this.y + 550, 100, 100);
-		image(robotGif, thix.x, this.y + 550, 100, 100);
+		image(robotGif, this.x, this.y + 550, 100, 100);
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
@@ -561,7 +559,6 @@ function blokkenRakenElkaarRange(blok1, blok2) {                 //Dit doe hetze
 
 function draw() {
 	background('blue');
-	image(robotGif, 50, 50, 100, 100);
 	let blokInSpawn = false;
 	let vijandBlokInSpawn = false;
 	fill('black');                  //Dit maakt de tekst die laat zien hoeveel geld de speler heeft
