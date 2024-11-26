@@ -560,7 +560,7 @@ function blokkenRakenElkaarRange(blok1, blok2) {                 //Dit doe hetze
 
 function draw() {
 	background('blue');
-	image(robot, 50, 50, 100, 100);
+	image(robotGif, 50, 50, 100, 100);
 	let blokInSpawn = false;
 	let vijandBlokInSpawn = false;
 	fill('black');                  //Dit maakt de tekst die laat zien hoeveel geld de speler heeft
