@@ -8,6 +8,7 @@ hoeveelWachtrij = 0;
 vijandHoeveelWachtrij = 0;
 Geld = 500;
 robotGif = null; //
+vijandRobotGif = null; //
 
 class Basis {
 	constructor() {
@@ -329,8 +330,7 @@ class VijandRange extends Range { //Zelfde als Range maar dan een paar dingen om
 	}
 
 	plaatsRange() {
-		fill('green');
-		rect(this.x, this.y + 550, 100, 100);
+		image(vijandRobotGif, this.x, this.y + 550, 100, 100); //
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
@@ -516,6 +516,7 @@ let spawnWachtrij = [];
 
 function setup() {
 	robotGif = loadImage('ranged.gif'); //
+	vijandRobotGif = loadImage('vijandRanged.gif'); //
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
 
