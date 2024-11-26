@@ -297,7 +297,7 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 	}
 
 	plaatsRange() {
-		image(robotGif, this.x, this.y + 550, 100, 100);
+		image(robotGif, this.x, this.y + 550, 100, 100); //
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
@@ -515,7 +515,7 @@ let spawnWachtrij = [];
 
 
 function setup() {
-	robotGif = loadImage('ranged.gif');
+	robotGif = loadImage('ranged.gif'); //
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
 
