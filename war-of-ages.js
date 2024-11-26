@@ -516,7 +516,7 @@ let spawnWachtrij = [];
 
 
 function setup() {
-	robot = loadImage('C:\Users\corne\Downloads\USBWebserver\USBWebserver\root');
+	robot = loadImage('robot.jpg');
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
 
