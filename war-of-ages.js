@@ -516,7 +516,7 @@ let spawnWachtrij = [];
 
 
 function setup() {
-	robot = loadImage('robot.jpg');
+	robot = loadImage('robot.png');
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
 
@@ -560,6 +560,7 @@ function blokkenRakenElkaarRange(blok1, blok2) {                 //Dit doe hetze
 
 function draw() {
 	background('blue');
+	image(robot, 50, 50, 100, 100);
 	let blokInSpawn = false;
 	let vijandBlokInSpawn = false;
 	fill('black');                  //Dit maakt de tekst die laat zien hoeveel geld de speler heeft
@@ -575,7 +576,6 @@ function draw() {
 	vijandBasis.plaatsBasis();
 	basis.aanraken();
 	vijandBasis.aanraken();
-	image(robot, 50, 50, 100, 100);
 
 	for (let i = 0; i < hoeveelWachtrij; i++) {    //Dit tekent een rood blokje voor ieder blokje in de wachtrij
 		fill('red');
