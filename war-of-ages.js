@@ -555,8 +555,8 @@ function blokkenRakenElkaar(blok1, blok2) {                       //Dit zet een 
 }
 
 function blokkenRakenElkaarRange(blok1, blok2) {                 //Dit doe hetzelfde maar met een groter afstand, zodat range van afstand kan vechten
-	return (blok1.x + 200 >= blok2.x && blok1.x <= blok2.x) ||
-		(blok2.x + 200 >= blok1.x && blok2.x <= blok1.x);
+	return (blok1.x + 210 >= blok2.x && blok1.x <= blok2.x) ||
+		(blok2.x + 210 >= blok1.x && blok2.x <= blok1.x);
 }
 
 
