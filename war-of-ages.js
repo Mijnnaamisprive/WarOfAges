@@ -7,8 +7,10 @@ vijandHeavyNummer = 0;
 hoeveelWachtrij = 0;
 vijandHoeveelWachtrij = 0;
 Geld = 500;
-robotGif = null; //
-vijandRobotGif = null; //
+meleeLopen = null; 
+rangeLopen = null; 
+vijandRangeLopen = null; 
+heavyLopen = null; 
 
 class Basis {
 	constructor() {
@@ -170,8 +172,7 @@ class Melee {
 	}
 
 	plaatsMelee() { //Plaats een rood blok op het veld
-		fill('red');
-		rect(this.x, this.y + 550, 100, 100);
+		image(meleeLopen, this.x, this.y + 550, 100, 100);
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
@@ -298,7 +299,7 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 	}
 
 	plaatsRange() {
-		image(robotGif, this.x, this.y + 550, 100, 100); //
+		image(rangeLopen, this.x, this.y + 550, 100, 100); //
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
@@ -429,8 +430,7 @@ class Heavy { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 
 
 	plaatsHeavy() {
-		fill('purple');
-		rect(this.x, this.y + 550, 100, 100);
+		image(heavyLopen, this.x, this.y + 550, 100, 100);	
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
@@ -515,8 +515,10 @@ let spawnWachtrij = [];
 
 
 function setup() {
-	robotGif = loadImage('ranged.gif'); //
-	vijandRobotGif = loadImage('vijandRanged.gif'); //
+	meleeLopen = loadImage('melee.gif'); 
+	rangeLopen = loadImage('ranged.gif'); 
+	vijandRangeLopen = loadImage('vijandRanged.gif'); 
+	heavyLopen = loadImage('heavy.gif');
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
 
