@@ -550,13 +550,13 @@ function vechten() {                        //Als er gevochten wordt gebreurt pi
 }
 
 function blokkenRakenElkaar(blok1, blok2) {                       //Dit zet een afstand van 105 als 2 blokken daarin zitten raken ze elkaar aan
-	return (blok1.x + 105 >= blok2.x && blok1.x <= blok2.x) ||
-		(blok2.x + 105 >= blok1.x && blok2.x <= blok1.x);
+	return (blok1.x + 100 >= blok2.x && blok1.x <= blok2.x) ||
+		(blok2.x + 100 >= blok1.x && blok2.x <= blok1.x);
 }
 
 function blokkenRakenElkaarRange(blok1, blok2) {                 //Dit doe hetzelfde maar met een groter afstand, zodat range van afstand kan vechten
-	return (blok1.x + 295 >= blok2.x && blok1.x <= blok2.x) ||
-		(blok2.x + 295 >= blok1.x && blok2.x <= blok1.x);
+	return (blok1.x + 200 >= blok2.x && blok1.x <= blok2.x) ||
+		(blok2.x + 200 >= blok1.x && blok2.x <= blok1.x);
 }
 
 
