@@ -331,7 +331,7 @@ class VijandRange extends Range { //Zelfde als Range maar dan een paar dingen om
 	}
 
 	plaatsRange() {
-		image(vijandRobotGif, this.x, this.y + 550, 100, 100); //
+		image(vijandRangeLopen, this.x, this.y + 550, 100, 100); //
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
