@@ -36,6 +36,7 @@ class Basis {
 			this.zichtbaar = false;
 			this.lose = true;
 		}
+		console.log(pijn);
 	}
 
 	aanraken() {
