@@ -36,7 +36,6 @@ class Basis {
 			this.zichtbaar = false;
 			this.lose = true;
 		}
-		console.log(this.pijn);
 		console.log(this.inRange);
 		console.log(this.rangeCombat);
 		console.log(this.vechten)
@@ -138,7 +137,6 @@ class VijandBasis extends Basis { //Zelfde als Basis maar dan een paar dingen om
 	plaatsBasis() {
 		fill('white');
 		rect(2480, 350, 300, 300);
-		console.log(this.pijn);
 		console.log(this.inRange);
 		console.log(this.rangeCombat);
 		console.log(this.vechten)
@@ -632,11 +630,6 @@ function rangedCombat(blok1, blok2) {
 
 
 function draw() {
-	console.log(pijn);
-	console.log(inRange);
-	console.log(rangeCombat);
-	console.log(vechten);
-	console.log('mouse');
 	background('blue');
 	let blokInSpawn = false;
 	let vijandBlokInSpawn = false;
