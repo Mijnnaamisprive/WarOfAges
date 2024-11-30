@@ -7,10 +7,10 @@ vijandHeavyNummer = 0;
 hoeveelWachtrij = 0;
 vijandHoeveelWachtrij = 0;
 Geld = 500;
-meleeLopen = null; 
-rangeLopen = null; 
-vijandRangeLopen = null; 
-heavyLopen = null; 
+meleeLopen = null;
+rangeLopen = null;
+vijandRangeLopen = null;
+heavyLopen = null;
 
 class Basis {
 	constructor() {
@@ -46,7 +46,7 @@ class Basis {
 		let vriendRaken = false;
 		for (let i = 0; i < 999; i++) {
 			if ((this !== melee[i] && melee[i].zichtbaar && MeleeCombat(this, melee[i])) ||
-			(this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) ||
+				(this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) ||
 				(this !== heavy[i] && heavy[i].zichtbaar && MeleeCombat(this, heavy[i]))) {
 				raken = true;
 				vriendRaken = true;
@@ -56,13 +56,15 @@ class Basis {
 				raken = true;
 				this.vechten = true;
 			}
-			if (vijandRange[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
-			if 	(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])){
+			if (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) {
 				this.rangeCombat = true;
 			}
 		}
+		console.log(this.inRange);
+		console.log('i need something to upload');
 		return raken;
 	}
 
@@ -116,10 +118,10 @@ class VijandBasis extends Basis { //Zelfde als Basis maar dan een paar dingen om
 				raken = true;
 				vriendRaken = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
-			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])){
+			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) {
 				this.rangeCombat = true;
 			}
 		}
@@ -179,7 +181,7 @@ class Melee {
 		let vriendRaken = false;
 		for (let i = 0; i < 999; i++) {
 			if ((this !== melee[i] && melee[i].zichtbaar && MeleeCombat(this, melee[i])) ||
-			(this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) ||
+				(this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) ||
 				(this !== heavy[i] && heavy[i].zichtbaar && MeleeCombat(this, heavy[i]))) {
 				raken = true;
 				vriendRaken = true;
@@ -189,7 +191,7 @@ class Melee {
 				raken = true;
 				this.vechten = true;
 			}
-			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
 			if (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) {
@@ -199,7 +201,7 @@ class Melee {
 		return raken;
 	}
 
-	plaatsMelee() { 
+	plaatsMelee() {
 		image(meleeLopen, this.x, this.y + 550, 100, 100);
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
@@ -209,7 +211,7 @@ class Melee {
 		}
 	}
 
-	plaatsMeleeMenu() { 
+	plaatsMeleeMenu() {
 		fill('red');
 		rect(this.menux, this.menuy, 100, 50);
 		this.zichtbaarM = true;
@@ -217,7 +219,7 @@ class Melee {
 	}
 }
 
-class VijandMelee extends Melee { 
+class VijandMelee extends Melee {
 	constructor() {
 		super();
 		this.x = 2380;
@@ -256,10 +258,10 @@ class VijandMelee extends Melee {
 				raken = true
 				vriendRaken = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
-			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])){
+			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) {
 				this.rangeCombat = true;
 			}
 		}
@@ -320,7 +322,7 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 		let vriendRaken = false;
 		for (let i = 0; i < 999; i++) {
 			if ((this !== melee[i] && melee[i].zichtbaar && MeleeCombat(this, melee[i])) ||
-			(this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) ||
+				(this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) ||
 				(this !== heavy[i] && heavy[i].zichtbaar && MeleeCombat(this, heavy[i]))) {
 				raken = true;
 				vriendRaken = true;
@@ -330,7 +332,7 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 				raken = true;
 				this.vechten = true;
 			}
-			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
 			if (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) {
@@ -407,15 +409,16 @@ class VijandRange extends Range {
 				raken = true;
 				vriendRaken = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
-			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])){
+			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) {
 				this.rangeCombat = true;
 			}
 		}
 		return raken;
-	}}
+	}
+}
 
 class Heavy {
 	constructor() {
@@ -470,7 +473,7 @@ class Heavy {
 				raken = true;
 				this.vechten = true;
 			}
-			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
 			if (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) {
@@ -483,7 +486,7 @@ class Heavy {
 
 
 	plaatsHeavy() {
-		image(heavyLopen, this.x, this.y + 550, 100, 100);	
+		image(heavyLopen, this.x, this.y + 550, 100, 100);
 		if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 && mouseY < this.y + 650) {
 			fill('black');
 			rect(this.x, this.y + 510, 100, 20);
@@ -551,10 +554,10 @@ class VijandHeavy extends Heavy { //Zelfde als Heavy maar dan een paar dingen om
 				raken = true;
 				vriendRaken = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken) {
 				this.inRange += 1;
 			}
-			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])){
+			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])) {
 				this.rangeCombat = true;
 			}
 		}
@@ -573,9 +576,9 @@ let spawnWachtrij = [];
 
 
 function setup() {
-	meleeLopen = loadImage('melee.gif'); 
-	rangeLopen = loadImage('ranged.gif'); 
-	vijandRangeLopen = loadImage('vijandRanged.gif'); 
+	meleeLopen = loadImage('melee.gif');
+	rangeLopen = loadImage('ranged.gif');
+	vijandRangeLopen = loadImage('vijandRanged.gif');
 	heavyLopen = loadImage('heavy.gif');
 	canvas = createCanvas(2780, 1300);
 	canvas.parent('processing');
