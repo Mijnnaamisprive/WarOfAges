@@ -59,7 +59,7 @@ class Basis {
 				raken = true;
 				this.vechten = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if 	(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])){
@@ -262,7 +262,7 @@ class VijandMelee extends Melee {
 				raken = true
 				vriendRaken = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])){
@@ -413,7 +413,7 @@ class VijandRange extends Range {
 				raken = true;
 				vriendRaken = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])){
@@ -557,7 +557,7 @@ class VijandHeavy extends Heavy { //Zelfde als Heavy maar dan een paar dingen om
 				raken = true;
 				vriendRaken = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if (this !== range[i] && range[i].zichtbaar && closeRangedCombat(this, range[i])){
