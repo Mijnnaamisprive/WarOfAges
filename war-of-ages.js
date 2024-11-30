@@ -399,8 +399,8 @@ class Heavy {
     }
 
     aanraken() {
-        let vriendRaken = false;
-        let raken = false;
+        let raaktVriend = false;
+        let raaktVijand = false;
         this.vechten = false;
         this.laatRangePijn = false;
         this.rangePijn = false;
@@ -409,12 +409,13 @@ class Heavy {
                 (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && closeMelee(this, melee[i])) ||
                 (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && closeMelee(this, range[i])) ||
                 (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && closeMelee(this, heavy[i]))) {
-                raken = true;
+                raaktVijand = true;
             } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar && closeMelee(this, vijandMelee[i])) ||
                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && closeMelee(this, vijandRange[i])) ||
                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && closeMelee(this, vijandHeavy[i]))) {
                 this.vechten = true;
-                vriendRaken = true;
+                raaktVijand = true
+                raaktVriend = true;
             }
 
             if (vijandRange[i].zichtbaar && rangeCombat(this, vijandRange[i]))
