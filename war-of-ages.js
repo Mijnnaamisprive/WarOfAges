@@ -138,6 +138,10 @@ class VijandBasis extends Basis { //Zelfde als Basis maar dan een paar dingen om
 	plaatsBasis() {
 		fill('white');
 		rect(2480, 350, 300, 300);
+		console.log(this.pijn);
+		console.log(this.inRange);
+		console.log(this.rangeCombat);
+		console.log(this.vechten)
 	}
 }
 
