@@ -632,6 +632,11 @@ function rangedCombat(blok1, blok2) {
 
 
 function draw() {
+	console.log(pijn);
+	console.log(inRange);
+	console.log(rangeCombat);
+	console.log(vechten);
+	console.log('mouse');
 	background('blue');
 	let blokInSpawn = false;
 	let vijandBlokInSpawn = false;
