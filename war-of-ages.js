@@ -53,7 +53,7 @@ class Basis {
 				(this !== heavy[i] && heavy[i].zichtbaar && MeleeCombat(this, heavy[i]))) {
 				raken = true;
 				vriendRaken = true;
-			} else if ((MeleeCombat(basis, this)) ||
+			} else if 
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
 				raken = true;
@@ -112,7 +112,7 @@ class VijandBasis extends Basis { //Zelfde als Basis maar dan een paar dingen om
 				(this !== heavy[i] && heavy[i].zichtbaar && MeleeCombat(this, heavy[i]))) {
 				raken = true;
 				this.vechten = true;
-			} else if ((MeleeCombat(basis, this)) ||
+			} else if
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
