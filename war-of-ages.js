@@ -36,7 +36,10 @@ class Basis {
 			this.zichtbaar = false;
 			this.lose = true;
 		}
-		console.log(pijn);
+		console.log(this.pijn);
+		console.log(this.inRange);
+		console.log(this.rangeCombat);
+		console.log(this.vechten)
 	}
 
 	aanraken() {
