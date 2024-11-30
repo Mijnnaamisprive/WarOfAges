@@ -15,11 +15,12 @@ heavyLopen = null;
 class Basis {
 	constructor() {
 		this.vechten = false;
-		this.rangePijn = false;
 		this.hp = 100;
 		this.x = 200;
 		this.verlies = false;
 		this.win = false;
+		this.rangeCombat = false;
+		this.inRange = 0;
 	}
 
 	pijn = () => {
@@ -140,12 +141,13 @@ class Melee {
 	constructor() {
 		this.zichtbaar = false;
 		this.vechten = false;
-		this.rangePijn = false;
 		this.hp = 30;
 		this.x = 300;
 		this.y = 0;
 		this.menux = 0;
 		this.menuy = 0;
+		this.rangeCombat = false;
+		this.inRange = 0;
 	}
 
 	pijn = () => {
@@ -285,7 +287,8 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 		this.zichtbaar = false;
 		this.hp = 20;
 		this.vechten = false;
-		this.rangePijn = false;
+		this.rangeCombat = false;
+		this.inRange = 0;
 	}
 
 	pijn = () => {
@@ -424,7 +427,8 @@ class Heavy {
 		this.loopt = true;
 		this.hp = 50;
 		this.vechten = false;
-		this.rangePijn = false;
+		this.rangeCombat = false;
+		this.inRange = 0;
 	}
 
 	pijn = () => {
