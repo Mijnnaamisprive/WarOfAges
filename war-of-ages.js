@@ -26,19 +26,16 @@ class Basis {
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
 			this.lose = true;
 		}
-		console.log(this.inRange);
-		console.log(this.rangeCombat);
-		console.log(this.vechten)
 	}
 
 	aanraken() {
@@ -59,7 +56,7 @@ class Basis {
 				raken = true;
 				this.vechten = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, vijandRange[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if 	(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])){
@@ -89,11 +86,11 @@ class VijandBasis extends Basis { //Zelfde als Basis maar dan een paar dingen om
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
@@ -137,9 +134,6 @@ class VijandBasis extends Basis { //Zelfde als Basis maar dan een paar dingen om
 	plaatsBasis() {
 		fill('white');
 		rect(2480, 350, 300, 300);
-		console.log(this.inRange);
-		console.log(this.rangeCombat);
-		console.log(this.vechten)
 	}
 }
 
@@ -159,11 +153,11 @@ class Melee {
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
@@ -195,7 +189,7 @@ class Melee {
 				raken = true;
 				this.vechten = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) {
@@ -232,11 +226,11 @@ class VijandMelee extends Melee {
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
@@ -300,11 +294,11 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
@@ -336,7 +330,7 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 				raken = true;
 				this.vechten = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) {
@@ -383,11 +377,11 @@ class VijandRange extends Range {
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
@@ -440,11 +434,11 @@ class Heavy {
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
@@ -476,7 +470,7 @@ class Heavy {
 				raken = true;
 				this.vechten = true;
 			}
-			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
+			if (vijandRange[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
 				this.inRange += 1;
 			}
 			if (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) {
@@ -527,11 +521,11 @@ class VijandHeavy extends Heavy { //Zelfde als Heavy maar dan een paar dingen om
 	pijn = () => {
 		if (this.inRange = 2)
 			this.hp -= 20;
-		if (this.inRange = 1 && this.vechten)
+		else if (this.inRange = 1 && this.vechten)
 			this.hp -= 20
-		if (this.inRange = 1 && this.rangeCombat)
+		else if (this.inRange = 1 && this.rangeCombat)
 			this.hp -= 10;
-		if (this.vechten)
+		else if (this.vechten)
 			this.hp -= 10;
 		if (this.hp <= 0) {
 			this.zichtbaar = false;
