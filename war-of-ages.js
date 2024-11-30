@@ -52,7 +52,7 @@ class Basis {
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
-				raken = true
+				raken = true;
 				this.vechten = true;
 			}
 			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
@@ -112,7 +112,7 @@ class VijandBasis extends Basis { //Zelfde als Basis maar dan een paar dingen om
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
-				raken = true
+				raken = true;
 				vriendRaken = true;
 			}
 			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
@@ -184,7 +184,7 @@ class Melee {
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
-				raken = true
+				raken = true;
 				this.vechten = true;
 			}
 			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
@@ -324,7 +324,7 @@ class Range { //Zelfde als Melee maar dan een paar hoeveelheden ander(zoals hp)
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
-				raken = true
+				raken = true;
 				this.vechten = true;
 			}
 			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
@@ -401,7 +401,7 @@ class VijandRange extends Range {
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
-				raken = true
+				raken = true;
 				vriendRaken = true;
 			}
 			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
@@ -463,7 +463,7 @@ class Heavy {
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
-				raken = true
+				raken = true;
 				this.vechten = true;
 			}
 			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
@@ -544,7 +544,7 @@ class VijandHeavy extends Heavy { //Zelfde als Heavy maar dan een paar dingen om
 				(vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && MeleeCombat(this, vijandMelee[i])) ||
 				(vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && MeleeCombat(this, vijandRange[i])) ||
 				(vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && MeleeCombat(this, vijandHeavy[i]))) {
-				raken = true
+				raken = true;
 				vriendRaken = true;
 			}
 			if (range[i].zichtbaar && rangedCombat(this, range[i]) && !vriendRaken){
