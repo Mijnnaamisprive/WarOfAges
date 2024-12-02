@@ -718,6 +718,7 @@ let vijandBasis = new VijandBasis();
 let spawnQueue = [];
 
 function setup() {
+    spelerRangedLopen = loadImage('SpelerRangedLopen.gif');
     canvas = createCanvas(2780, 1300);
     canvas.parent("processing");
 
@@ -763,7 +764,6 @@ function bloksAreTouchingRange(blok1, blok2) {
 
 function draw() {
     background("blue");
-    spelerRangedLopen = loadImg('SpelerRangedLopen');
     let blokInSpawn = false;
     let vijandBlokInSpawn = false;
     fill("black");
