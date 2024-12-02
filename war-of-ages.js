@@ -7,6 +7,7 @@ vijandHeavyNummer = 0;
 hoeveelQueue = 0;
 vijandHoeveelQueue = 0;
 Geld = 5000;
+SpelerRangedLopen = null;
 
 class Basis {
     constructor() {
@@ -400,8 +401,7 @@ class Range {
     }
 
     plaats_range() {
-        fill("green");
-        rect(this.x, this.y + 550, 100, 100);
+    image(spelerRangedLopen, this.x, this.y + 550, 100, 100);
 
         if (
             mouseX > this.x &&
@@ -763,6 +763,7 @@ function bloksAreTouchingRange(blok1, blok2) {
 
 function draw() {
     background("blue");
+    spelerRangedLopen = loadImg('SpelerRangedLopen');
     let blokInSpawn = false;
     let vijandBlokInSpawn = false;
     fill("black");
