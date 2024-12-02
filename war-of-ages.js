@@ -7,7 +7,7 @@ vijandHeavyNummer = 0;
 hoeveelQueue = 0;
 vijandHoeveelQueue = 0;
 Geld = 5000;
-SpelerRangedLopen = null;
+spelerRangedLopen = null;
 
 class Basis {
     constructor() {
