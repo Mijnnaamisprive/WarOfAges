@@ -718,7 +718,7 @@ let vijandBasis = new VijandBasis();
 let spawnQueue = [];
 
 function setup() {
-    spelerRangedLopen = loadImage('SpelerRangedLopen.gif');
+    spelerRangedLopen = loadImage('spelerRangedLopen.gif');
     canvas = createCanvas(2780, 1300);
     canvas.parent("processing");
 
