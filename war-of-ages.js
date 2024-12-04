@@ -27,7 +27,7 @@ class Basis {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (bloksAreTouching(vijandBasis, this) ||
+      if (bloksAreTouching(basis, this) ||
           (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar &&
            bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar &&
@@ -159,13 +159,10 @@ class Melee {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (bloksAreTouching(vijandBasis, this) ||
-          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar &&
-           bloksAreTouching(this, melee[i])) ||
-          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar &&
-           bloksAreTouching(this, range[i])) ||
-          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar &&
-           bloksAreTouching(this, heavy[i]))) {
+      if (bloksAreTouching(basis, this) ||
+          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
+          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
       } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar &&
                   bloksAreTouching(this, vijandMelee[i])) ||
@@ -286,7 +283,7 @@ class Range {
     this.hp = 20;
     this.vechten = false;
     this.closestBlok = {x : 99999};
-    this.rangeLength = 500;
+    this.rangeLength = 150;
   }
 
   attack = () => {
@@ -325,7 +322,7 @@ class Range {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (bloksAreTouching(vijandBasis, this) ||
+      if (bloksAreTouching(basis, this) ||
           (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar &&
            bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar &&
@@ -490,7 +487,7 @@ class Heavy {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (bloksAreTouching(vijandBasis, this) ||
+      if (bloksAreTouching(basis, this) ||
           (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar &&
            bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar &&
@@ -656,11 +653,6 @@ function vechten() {
 function bloksAreTouching(blok1, blok2) {
   return ((blok1.x + 105 >= blok2.x && blok1.x <= blok2.x) ||
           (blok2.x + 105 >= blok1.x && blok2.x <= blok1.x));
-}
-
-function bloksAreTouchingRange(blok1, blok2) {
-  return ((blok1.x + 220 >= blok2.x && blok1.x <= blok2.x) ||
-          (blok2.x + 220 >= blok1.x && blok2.x <= blok1.x));
 }
 
 function draw() {
