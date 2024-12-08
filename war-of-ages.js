@@ -615,7 +615,7 @@ let spawnQueue = [];
 
 function setup() {
   spelerRangedLopen = loadImage('spelerRangedLopen.gif');
-  canvas = createCanvas(1890, 1000);
+  canvas = createCanvas(1890, 950);
   canvas.parent("processing");
 
   frameRate(10);
