@@ -50,12 +50,12 @@ class Basis {
     
   plaats_basis_slaandoos() {
     fill("black");
-    rect(this.x, 550, 100, 100);
+    rect(this.x, 400, 100, 100);
   }
 
   plaats_basis() {
     fill("black");
-    rect(0, 350, 300, 300);
+    rect(0, 350, 150, 150);
   }
 }
 
@@ -101,18 +101,18 @@ aanraken() {
 
   plaats_basis_slaandoos() {
     fill("white");
-    rect(this.x, 550, 100, 100);
+    rect(this.x, 400, 100, 100);
   }
 
   plaats_basis() {
     fill("white");
-    rect(2480, 350, 300, 300);
+    rect(1745, 350, 150, 150);
   }
 }
 
 class Melee {
   constructor() {
-    this.x = 300;
+    this.x = 150;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -201,7 +201,7 @@ class Melee {
 class VijandMelee extends Melee {
   constructor() {
     super();
-    this.x = 2380;
+    this.x = 1800;
     this.closestBlok.x = -99999;
   }
 
