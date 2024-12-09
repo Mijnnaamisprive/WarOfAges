@@ -51,12 +51,12 @@ class Basis {
     
   plaats_basis_slaandoos() {
     fill("black");
-    rect(this.x, 400, 100, 100);
+    rect(this.x, 775, 100, 100);
   }
 
   plaats_basis() {
     fill("black");
-    rect(0, 750, 150, 150);
+    rect(0, 725, 150, 150);
   }
 }
 
