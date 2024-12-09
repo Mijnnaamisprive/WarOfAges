@@ -8,6 +8,7 @@ hoeveelQueue = 0;
 vijandHoeveelQueue = 0;
 Geld = 5000;
 spelerRangedLopen = null;
+achtergrond = null;
 
 class Basis {
   constructor() {
@@ -614,6 +615,7 @@ let vijandBasis = new VijandBasis();
 let spawnQueue = [];
 
 function setup() {
+  achtergrond = LoadImage('Achtergrond.jpg');
   spelerRangedLopen = loadImage('spelerRangedLopen.gif');
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
@@ -656,7 +658,7 @@ function bloksAreTouching(blok1, blok2) {
 }
 
 function draw() {
-  background("blue");
+  image(achtergrond, 0, 0, 1895, 925,);
   let blokInSpawn = false;
   let vijandBlokInSpawn = false;
   fill("black");
