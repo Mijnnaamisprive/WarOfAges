@@ -615,7 +615,7 @@ let vijandBasis = new VijandBasis();
 let spawnQueue = [];
 
 function setup() {
-  achtergrond = LoadImage('Achtergrond.jpg');
+  achtergrond = loadImage('Achtergrond.jpg');
   spelerRangedLopen = loadImage('spelerRangedLopen.gif');
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
