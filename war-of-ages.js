@@ -661,7 +661,7 @@ function draw() {
   let vijandBlokInSpawn = false;
   fill("black");
   textSize(50);
-  text("$" + Geld, 2550, 100);
+  text("$" + Geld, 1880, 100);
   fill("red");
   textSize(50);
   text("Health: " + basis.hp, 2500, 175);
