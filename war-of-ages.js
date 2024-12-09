@@ -16,7 +16,7 @@ class Basis {
     this.lose = false;
     this.hp = 100;
     this.vechten = false;
-    this.x = 200;
+    this.x = 50;
   }
 
   attack = () => {
