@@ -658,7 +658,7 @@ function bloksAreTouching(blok1, blok2) {
 }
 
 function draw() {
-  image(achtergrond, 0, 0, 1895, 925,);
+  image(achtergrond, 0, 0, 1895, 925);
   let blokInSpawn = false;
   let vijandBlokInSpawn = false;
   fill("black");
