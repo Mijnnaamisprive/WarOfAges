@@ -56,7 +56,7 @@ class Basis {
 
   plaats_basis() {
     fill("black");
-    rect(0, 350, 150, 150);
+    rect(0, 750, 150, 150);
   }
 }
 
