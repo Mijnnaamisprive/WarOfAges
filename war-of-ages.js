@@ -627,8 +627,7 @@ function draw() {
       if (melee[i].x < 280)
         blokInSpawn = true;
 
-      melee[i].loopt = !melee[i].aanraken();
-      console.log(melee[i].aanraken)
+      melee[i].loopt = !melee[i].touching();
     }
     if (range[i].zichtbaar) {
       range[i].plaats_range();
@@ -637,7 +636,7 @@ function draw() {
       if (range[i].x < 280)
         blokInSpawn = true;
 
-      range[i].loopt = !range[i].aanraken();
+      range[i].loopt = !range[i].touching();
     }
 
     if (heavy[i].zichtbaar) {
@@ -647,7 +646,7 @@ function draw() {
       if (heavy[i].x < 280)
         blokInSpawn = true;
 
-      heavy[i].loopt = !heavy[i].aanraken();
+      heavy[i].loopt = !heavy[i].touching();
     }
 
     if (vijandMelee[i].zichtbaar) {
@@ -657,7 +656,7 @@ function draw() {
       if (vijandMelee[i].x > 1515)
         vijandBlokInSpawn = true;
 
-      vijandMelee[i].loopt = !vijandMelee[i].aanraken();
+      vijandMelee[i].loopt = !vijandMelee[i].touching();
     }
 
     if (vijandRange[i].zichtbaar) {
@@ -667,7 +666,7 @@ function draw() {
       if (vijandRange[i].x > 1515)
         vijandBlokInSpawn = true;
 
-      vijandRange[i].loopt = !vijandRange[i].aanraken();
+      vijandRange[i].loopt = !vijandRange[i].touching();
     }
     if (vijandHeavy[i].zichtbaar) {
       vijandHeavy[i].plaats_heavy();
@@ -676,7 +675,7 @@ function draw() {
       if (vijandHeavy[i].x > 1515)
         vijandBlokInSpawn = true;
 
-      vijandHeavy[i].loopt = !vijandHeavy[i].aanraken();
+      vijandHeavy[i].loopt = !vijandHeavy[i].touching();
     }
   }
 
