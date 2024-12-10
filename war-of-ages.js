@@ -99,7 +99,7 @@ aanraken() {
   }
 
   plaats_basis() {
-    image(vijandBasisFoto, 1720, 700, 175, 175);
+    image(vijandBasisFoto, 1420, 700, 175, 175);
   }
 }
 
@@ -246,7 +246,7 @@ class VijandMelee extends Melee {
 class Range {
   constructor() {
     this.x = 180;
-        this.loopt = true;
+    this.loopt = true;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
