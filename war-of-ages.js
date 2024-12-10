@@ -57,7 +57,7 @@ class Basis {
 class VijandBasis extends Basis {
   constructor() {
     super();
-    this.x = 1545;
+    this.x = 1720;
   }
 
   attack = () => {
@@ -87,7 +87,7 @@ aanraken() {
 
   plaats_basis_slaandoos() {
     fill("white");
-    rect(this.x, 775, 100, 100);
+    rect(this.x, 700, 100, 100);
   }
 
   plaats_basis() {
@@ -304,7 +304,7 @@ class Range {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 730, 5 * this.hp, 20);
     }
   }
 
@@ -312,8 +312,7 @@ class Range {
     fill("green");
     rect(this.menux + 100, this.menuy, 100, 50);
     this.zichtbaarR = true;
-    return (mouseX > this.menux + 100 && mouseX < this.menux + 200 &&
-            mouseY > this.menuy && mouseY < this.menuy + 50);
+    return (mouseX > this.menux + 100 && mouseX < this.menux + 200 && mouseY > this.menuy && mouseY < this.menuy + 50);
   }
 }
 
@@ -328,14 +327,11 @@ class VijandRange extends Range {
       this.closestBlok.x = -99999;
 
     for (let i = 0; i < 999; i++) {
-      if (melee[i].zichtbaar &&
-          Math.abs(melee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (melee[i].zichtbaar && Math.abs(melee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = melee[i];
-      if (range[i].zichtbaar &&
-          Math.abs(range[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (range[i].zichtbaar && Math.abs(range[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = range[i];
-      if (heavy[i].zichtbaar &&
-          Math.abs(heavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (heavy[i].zichtbaar && Math.abs(heavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = heavy[i];
       if (basis.x > this.closestBlok.x)
         this.closestBlok = basis;
@@ -357,7 +353,7 @@ class VijandRange extends Range {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 730, 5 * this.hp, 20);
     }
   }
   
@@ -450,7 +446,7 @@ class Heavy {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 730,  * this.hp, 20);
     }
   }
 
@@ -458,8 +454,7 @@ class Heavy {
     fill("purple");
     rect(this.menux + 200, this.menuy, 100, 50);
     this.zichtbaarH = true;
-    return (mouseX > this.menux + 200 && mouseX < this.menux + 300 &&
-            mouseY > this.menuy && mouseY < this.menuy + 50);
+    return (mouseX > this.menux + 200 && mouseX < this.menux + 300 && mouseY > this.menuy && mouseY < this.menuy + 50);
   }
 }
 
@@ -476,7 +471,7 @@ class VijandHeavy extends Heavy {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 730, 2 * this.hp, 20);
     }
   }
 
@@ -485,14 +480,11 @@ class VijandHeavy extends Heavy {
       this.closestBlok.x = -99999;
 
     for (let i = 0; i < 999; i++) {
-      if (melee[i].zichtbaar &&
-          Math.abs(melee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (melee[i].zichtbaar && Math.abs(melee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = melee[i];
-      if (range[i].zichtbaar &&
-          Math.abs(range[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (range[i].zichtbaar && Math.abs(range[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = range[i];
-      if (heavy[i].zichtbaar &&
-          Math.abs(heavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (heavy[i].zichtbaar && Math.abs(heavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = heavy[i];
       if (basis.x > this.closestBlok.x)
         this.closestBlok = basis;
