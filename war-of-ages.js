@@ -70,12 +70,13 @@ aanraken() {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+      if (bloksAreTouching(basis, this) ||
+        (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
-      } else if (bloksAreTouching(basis, this) ||
+        (bloksAreTouching(basis, this) ||
                  (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
