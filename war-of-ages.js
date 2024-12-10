@@ -237,7 +237,6 @@ class VijandMelee extends Melee {
     }
   }
 }
-
 class Range {
   constructor() {
     this.x = 180;
@@ -301,12 +300,11 @@ class Range {
 
   plaats_range() {
     image(spelerRangedLopen, this.x, this.y + 775, 100, 100);
-
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 730, 5 * this.hp, 20);
+      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
     }
   }
 
@@ -355,14 +353,14 @@ class VijandRange extends Range {
   plaats_range() {
     fill("green");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 &&
-        mouseY < this.y + 875) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
-      rect(this.x, this.y + 750, 100, 20);
+      rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 750, 5 * this.hp, 20);
+      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
     }
   }
+  
   aanraken() {
     let touching = false;
     this.vechten = false;
@@ -448,12 +446,11 @@ class Heavy {
   plaats_heavy() {
     fill("purple");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
-        mouseY < this.y + 650) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
-      rect(this.x, this.y + 750, 100, 20);
+      rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 750, 2 * this.hp, 20);
+      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
     }
   }
 
@@ -475,12 +472,11 @@ class VijandHeavy extends Heavy {
   plaats_heavy() {
     fill("purple");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
-        mouseY < this.y + 650) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
-      rect(this.x, this.y + 750, 100, 20);
+      rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 750, 2 * this.hp, 20);
+      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
     }
   }
 
@@ -590,10 +586,10 @@ function draw() {
   let vijandBlokInSpawn = false;
   fill("black");
   textSize(50);
-  text("$" + Geld, 1640, 100);
+  text("$" + Geld, 1600, 100);
   fill("red");
   textSize(50);
-  text("Health: " + basis.hp, 1640, 175);
+  text("Health: " + basis.hp, 1600, 175);
 
   basis.plaats_basis_slaandoos();
   basis.plaats_basis();
@@ -648,7 +644,7 @@ function draw() {
       vijandMelee[i].plaats_melee();
       vijandMelee[i].lopen(-5, 0);
 
-      if (vijandMelee[i].x > 1540)
+      if (vijandMelee[i].x > 1440)
         vijandBlokInSpawn = true;
 
       vijandMelee[i].loopt = !vijandMelee[i].aanraken();
@@ -658,7 +654,7 @@ function draw() {
       vijandRange[i].plaats_range();
       vijandRange[i].lopen(-5, 0);
 
-      if (vijandRange[i].x > 1540)
+      if (vijandRange[i].x > 1440)
         vijandBlokInSpawn = true;
 
       vijandRange[i].loopt = !vijandRange[i].aanraken();
@@ -667,7 +663,7 @@ function draw() {
       vijandHeavy[i].plaats_heavy();
       vijandHeavy[i].lopen(-5, 0);
 
-      if (vijandHeavy[i].x > 1540)
+      if (vijandHeavy[i].x > 1440)
         vijandBlokInSpawn = true;
 
       vijandHeavy[i].loopt = !vijandHeavy[i].aanraken();
@@ -723,23 +719,17 @@ function draw() {
 
 function mousePressed() {
   if (hoeveelQueue < 5) {
-    if (meleeNummer < melee.length && melee[meleeNummer].plaats_mm() &&
-        Geld >= 25) {
-      // melee[meleeNummer].wordtZichtbaar = true;
+    if (meleeNummer < melee.length && melee[meleeNummer].plaats_mm() && Geld >= 25) {
       spawnQueue.unshift(melee[meleeNummer]);
       meleeNummer++;
       Geld -= 25;
       hoeveelQueue++;
-    } else if (rangeNummer < range.length && range[rangeNummer].plaats_rm() &&
-               Geld >= 40) {
-      // range[rangeNummer].wordtZichtbaar = true;
+    } else if (rangeNummer < range.length && range[rangeNummer].plaats_rm() && Geld >= 40) {
       spawnQueue.unshift(range[rangeNummer]);
       rangeNummer++;
       Geld -= 40;
       hoeveelQueue++;
-    } else if (heavyNummer < heavy.length && heavy[heavyNummer].plaats_hm() &&
-               Geld >= 80) {
-      // heavy[heavyNummer].wordtZichtbaar = true;
+    } else if (heavyNummer < heavy.length && heavy[heavyNummer].plaats_hm() && Geld >= 80) {
       spawnQueue.unshift(heavy[heavyNummer]);
       heavyNummer++;
       Geld -= 80;
@@ -750,14 +740,12 @@ function mousePressed() {
 
 function vijandMousePressed() {
   if (vijandHoeveelQueue < 5 && Math.round(Math.random() * 100) <= 30) {
-    if (vijandMeleeNummer < vijandMelee.length &&
-        Math.round(Math.random() * 100) <= 50) {
+    if (vijandMeleeNummer < vijandMelee.length && Math.round(Math.random() * 100) <= 50) {
       vijandMelee[vijandMeleeNummer].wordtZichtbaar = true;
       vijandMeleeNummer++;
 
       vijandHoeveelQueue++;
-    } else if (vijandRangeNummer < vijandRange.length &&
-               Math.round(Math.random() * 100) <= 50) {
+    } else if (vijandRangeNummer < vijandRange.length && Math.round(Math.random() * 100) <= 50) {
       vijandRange[vijandRangeNummer].wordtZichtbaar = true;
       vijandRangeNummer++;
 
