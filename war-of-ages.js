@@ -13,8 +13,8 @@ spelerRangedLopen = null;
 vijandRangedLopen = null;
 spelerHeavyLopen = null;
 vijandHeavyLopen = null;
-spelerBasisFoto = null;
-vijandBasisFoto = null;
+spelerBasis = null;
+vijandBasis = null;
 achtergrond = null;
 
 class Basis {
@@ -57,7 +57,7 @@ class Basis {
   }
 
   plaats_basis() {
-    image(spelerBasisFoto, 0, 700, 175, 175);
+    image(spelerBasis, 0, 700, 175, 175);
   }
 }
 
@@ -99,7 +99,7 @@ aanraken() {
   }
 
   plaats_basis() {
-    image(vijandBasisFoto, 1795, 700, 175, 175);
+    image(vijandBasis, 1795, 700, 175, 175);
   }
 }
 
@@ -540,8 +540,8 @@ function setup() {
   vijandRangedLopen = loadImage('vijandRangedLopen.gif');
   spelerHeavyLopen = loadImage('spelerHeavyLopen.gif');
   vijandHeavyLopen = loadImage('vijandHeavyLopen.gif');
-  spelerBasisFoto = loadImage('sasis.gif');
-  vijandBasisFoto = loadImage('vasis.gif');
+  spelerBasis = loadImage('spelerBasis.gif');
+  vijandBasis = loadImage('vijandBasis.gif');
   achtergrond = loadImage('achtergrond.jpg');
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
