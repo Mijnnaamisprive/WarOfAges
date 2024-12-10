@@ -33,6 +33,8 @@ class Basis {
 
     aanraken() {
     let touching = false;
+      console.log(this.vechten);
+      console.log(this.touching);
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
       if ((melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
@@ -44,7 +46,6 @@ class Basis {
                  (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
         this.vechten = true;
-        console.log(this.vechten);
         touching = true;
       }
     }
@@ -106,7 +107,7 @@ aanraken() {
 
 class Melee {
   constructor() {
-    this.x = 180;
+    this.x = 380;
     this.loopt = true;
     this.y = 0;
     this.menux = 0;
