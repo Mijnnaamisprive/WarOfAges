@@ -118,7 +118,7 @@ class VijandBasis extends Basis {
 
 class Melee {
   constructor() {
-    this.x = 380;
+    this.x = 180;
     this.loopt = true; //Zorgt ervoor dat een soldaat loopt C
     this.y = 0;
     this.menux = 0;
@@ -620,12 +620,12 @@ function draw() {
   textSize(50);
   text("Health: " + basis.hp, 1600, 175);
 
-  basis.plaats_basis();
+  basis.plaats_basis(); //Maakt de basis
   vijandBasis.plaats_basis();
   basis.aanraken();
   vijandBasis.aanraken();
 
-  for (let i = 0; i < hoeveelQueue; i++) {
+  for (let i = 0; i < hoeveelQueue; i++) { //Laat zien hoeveel er in queue zit C
     fill("red");
     rect(350 + i * 50, 20, 20, 20);
   }
@@ -636,15 +636,15 @@ function draw() {
     heavy[i].plaats_hm();
   }
 
-  for (let i = 0; i < 999; i++) {
+  for (let i = 0; i < 999; i++) { //Als een soldaat zichtbaar wordt, wordt hij geplaatst en gaat hij lopen C
     if (melee[i].zichtbaar) {
       melee[i].plaats_melee();
       melee[i].lopen(5, 0);
 
-      if (melee[i].x < 280)
+      if (melee[i].x < 280) //Als er een soldaat in spawn zit kan er niet nog een gespawned C
         blokInSpawn = true;
 
-      melee[i].loopt = !melee[i].aanraken();
+      melee[i].loopt = !melee[i].aanraken(); //Als de Soldaat iets aanraakt stop het met lopen C
     }
     if (range[i].zichtbaar) {
       range[i].plaats_range();
@@ -696,7 +696,7 @@ function draw() {
     }
   }
 
-  if (!blokInSpawn && spawnQueue.length) {
+  if (!blokInSpawn && spawnQueue.length) { //Houdt bij hoeveel er in queue zit C
     spawnQueue[spawnQueue.length - 1].zichtbaar = true;
     spawnQueue.pop();
     hoeveelQueue--;
@@ -729,13 +729,13 @@ function draw() {
     }
   }
 
-  if (basis.lose == true) {
+  if (basis.lose == true) { //Als verlies waar wordt dan komt dit scherm C
     background("black");
     fill("red");
     textSize(100);
     text("Game Over", 1200, 650);
   }
-  if (vijandBasis.win == true) {
+  if (vijandBasis.win == true) { //Als win waar wordt dan komt dit scherm C
     background("black");
     fill("green");
     textSize(100);
@@ -745,7 +745,7 @@ function draw() {
 
 function mousePressed() {
   if (hoeveelQueue < 5) {
-    if (meleeNummer < melee.length && melee[meleeNummer].plaats_mm() && Geld >= 25) {
+    if (meleeNummer < melee.length && melee[meleeNummer].plaats_mm() && Geld >= 25) { //Als je genoeg geld hebt en je klikt op meleeMenu zet je die soldaat in queue en er wordt geld afgehaald C
       spawnQueue.unshift(melee[meleeNummer]);
       meleeNummer++;
       Geld -= 25;
@@ -765,18 +765,18 @@ function mousePressed() {
 }
 
 function vijandMousePressed() {
-  if (vijandHoeveelQueue < 5 && Math.round(Math.random() * 100) <= 30) {
-    if (vijandMeleeNummer < vijandMelee.length && Math.round(Math.random() * 100) <= 50) {
+  if (vijandHoeveelQueue < 5 && Math.round(Math.random() * 100) <= 20) { //Elke seconden is er 20% kans dat er een vijand spawned C
+    if (vijandMeleeNummer < vijandMelee.length && Math.round(Math.random() * 100) <= 50) { //50% kans op melee C
       vijandMelee[vijandMeleeNummer].wordtZichtbaar = true;
       vijandMeleeNummer++;
 
       vijandHoeveelQueue++;
-    } else if (vijandRangeNummer < vijandRange.length && Math.round(Math.random() * 100) <= 50) {
+    } else if (vijandRangeNummer < vijandRange.length && Math.round(Math.random() * 100) <= 60) { // 30% kans op range C
       vijandRange[vijandRangeNummer].wordtZichtbaar = true;
       vijandRangeNummer++;
 
       vijandHoeveelQueue++;
-    } else if (vijandHeavyNummer < vijandHeavy.length) {
+    } else if (vijandHeavyNummer < vijandHeavy.length) { //20% kans op heavy C
       vijandHeavy[vijandHeavyNummer].wordtZichtbaar = true;
       vijandHeavyNummer++;
 
