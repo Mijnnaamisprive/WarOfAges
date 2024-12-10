@@ -29,19 +29,13 @@ class Basis {
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
       if (bloksAreTouching(basis, this) ||
-          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar &&
-           bloksAreTouching(this, melee[i])) ||
-          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar &&
-           bloksAreTouching(this, range[i])) ||
-          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar &&
-           bloksAreTouching(this, heavy[i]))) {
+          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
+          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar &&
-                  bloksAreTouching(this, vijandMelee[i])) ||
-                 (this !== vijandRange[i] && vijandRange[i].zichtbaar &&
-                  bloksAreTouching(this, vijandRange[i])) ||
-                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar &&
-                  bloksAreTouching(this, vijandHeavy[i]))) {
+      } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
+                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
+                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
         this.vechten = true;
         touching = true;
       }
@@ -51,12 +45,12 @@ class Basis {
     
   plaats_basis_slaandoos() {
     fill("black");
-    rect(this.x, 775, 100, 100);
+    rect(this.x, 800, 100, 100);
   }
 
   plaats_basis() {
     fill("black");
-    rect(0, 725, 150, 150);
+    rect(0, 700, 175, 175);
   }
 }
 
@@ -75,24 +69,15 @@ aanraken() {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((this !== melee[i] && melee[i].zichtbaar &&
-           bloksAreTouching(this, melee[i])) ||
-          (this !== range[i] && range[i].zichtbaar &&
-           bloksAreTouching(this, range[i])) ||
-          (this !== heavy[i] && heavy[i].zichtbaar &&
-           bloksAreTouching(this, heavy[i]))) {
+      if ((this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+          (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
+          (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
       } else if (bloksAreTouching(basis, this) ||
-                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] &&
-                  vijandMelee[i].zichtbaar &&
-                  bloksAreTouching(this, vijandMelee[i])) ||
-                 (vijandRange[i].x <= this.x && this !== vijandRange[i] &&
-                  vijandRange[i].zichtbaar &&
-                  bloksAreTouching(this, vijandRange[i])) ||
-                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] &&
-                  vijandHeavy[i].zichtbaar &&
-                  bloksAreTouching(this, vijandHeavy[i]))) {
+                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
+                 (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
+                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
         touching = true;
       }
     }
@@ -102,12 +87,12 @@ aanraken() {
 
   plaats_basis_slaandoos() {
     fill("white");
-    rect(this.x, 775, 100, 100);
+    rect(this.x, 800, 100, 100);
   }
 
   plaats_basis() {
     fill("white");
-    rect(1745, 725, 150, 150);
+    rect(1720, 725, 175, 175);
   }
 }
 
@@ -129,14 +114,11 @@ class Melee {
       this.closestBlok.x = 99999;
 
     for (let i = 0; i < 999; i++) {
-      if (vijandMelee[i].zichtbaar && Math.abs(vijandMelee[i].x - this.x) <
-                                          Math.abs(this.closestBlok.x - this.x))
+      if (vijandMelee[i].zichtbaar && Math.abs(vijandMelee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = vijandMelee[i];
-      if (vijandRange[i].zichtbaar && Math.abs(vijandRange[i].x - this.x) <
-                                          Math.abs(this.closestBlok.x - this.x))
+      if (vijandRange[i].zichtbaar && Math.abs(vijandRange[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = vijandRange[i];
-      if (vijandHeavy[i].zichtbaar && Math.abs(vijandHeavy[i].x - this.x) <
-                                          Math.abs(this.closestBlok.x - this.x))
+      if (vijandHeavy[i].zichtbaar && Math.abs(vijandHeavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = vijandHeavy[i];
       if (vijandBasis.x < this.closestBlok.x)
         this.closestBlok = vijandBasis;
@@ -165,12 +147,9 @@ class Melee {
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar &&
-                  bloksAreTouching(this, vijandMelee[i])) ||
-                 (this !== vijandRange[i] && vijandRange[i].zichtbaar &&
-                  bloksAreTouching(this, vijandRange[i])) ||
-                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar &&
-                  bloksAreTouching(this, vijandHeavy[i]))) {
+      } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
+                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
+                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
         this.vechten = true;
         touching = true;
       }
@@ -181,8 +160,8 @@ class Melee {
   plaats_melee() {
     fill("red");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
-        mouseY < this.y + 650) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 650 &&
+        mouseY < this.y + 750) {
       fill("black");
       rect(this.x, this.y + 750, 100, 20);
       fill("red");
@@ -194,8 +173,7 @@ class Melee {
     fill("red");
     rect(this.menux, this.menuy, 100, 50);
     this.zichtbaarM = true;
-    return (mouseX > this.menux && mouseX < this.menux + 100 &&
-            mouseY > this.menuy && mouseY < this.menuy + 50);
+    return (mouseX > this.menux && mouseX < this.menux + 100 && mouseY > this.menuy && mouseY < this.menuy + 50);
   }
 }
 
@@ -211,14 +189,11 @@ class VijandMelee extends Melee {
       this.closestBlok.x = -99999;
 
     for (let i = 0; i < 999; i++) {
-      if (melee[i].zichtbaar &&
-          Math.abs(melee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (melee[i].zichtbaar && Math.abs(melee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = melee[i];
-      if (range[i].zichtbaar &&
-          Math.abs(range[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (range[i].zichtbaar && Math.abs(range[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = range[i];
-      if (heavy[i].zichtbaar &&
-          Math.abs(heavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (heavy[i].zichtbaar && Math.abs(heavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = heavy[i];
       if (basis.x > this.closestBlok.x)
         this.closestBlok = basis;
@@ -237,24 +212,15 @@ class VijandMelee extends Melee {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((this !== melee[i] && melee[i].zichtbaar &&
-           bloksAreTouching(this, melee[i])) ||
-          (this !== range[i] && range[i].zichtbaar &&
-           bloksAreTouching(this, range[i])) ||
-          (this !== heavy[i] && heavy[i].zichtbaar &&
-           bloksAreTouching(this, heavy[i]))) {
+      if ((this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+          (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
+          (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
       } else if (bloksAreTouching(basis, this) ||
-                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] &&
-                  vijandMelee[i].zichtbaar &&
-                  bloksAreTouching(this, vijandMelee[i])) ||
-                 (vijandRange[i].x <= this.x && this !== vijandRange[i] &&
-                  vijandRange[i].zichtbaar &&
-                  bloksAreTouching(this, vijandRange[i])) ||
-                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] &&
-                  vijandHeavy[i].zichtbaar &&
-                  bloksAreTouching(this, vijandHeavy[i]))) {
+                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
+                 (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
+                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
         touching = true;
       }
     }
@@ -264,8 +230,8 @@ class VijandMelee extends Melee {
   plaats_melee() {
     fill("red");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
-        mouseY < this.y + 650) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 650 &&
+        mouseY < this.y + 750) {
       fill("black");
       rect(this.x, this.y + 750, 100, 20);
       fill("red");
