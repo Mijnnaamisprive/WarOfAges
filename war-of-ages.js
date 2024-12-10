@@ -181,7 +181,7 @@ class Melee {
 class VijandMelee extends Melee {
   constructor() {
     super();
-    this.x = 1540;
+    this.x = 1615;
     this.closestBlok.x = -99999;
   }
 
@@ -321,7 +321,7 @@ class Range {
 class VijandRange extends Range {
   constructor() {
     super();
-    this.x = 1540;
+    this.x = 1615;
   }
 
   attack = () => {
@@ -463,7 +463,7 @@ class Heavy {
 class VijandHeavy extends Heavy {
   constructor() {
     super();
-    this.x = 1540;
+    this.x = 1615;
   }
 
   plaats_heavy() {
@@ -638,7 +638,7 @@ function draw() {
       vijandMelee[i].plaats_melee();
       vijandMelee[i].lopen(-5, 0);
 
-      if (vijandMelee[i].x > 1440)
+      if (vijandMelee[i].x > 1515)
         vijandBlokInSpawn = true;
 
       vijandMelee[i].loopt = !vijandMelee[i].aanraken();
@@ -648,7 +648,7 @@ function draw() {
       vijandRange[i].plaats_range();
       vijandRange[i].lopen(-5, 0);
 
-      if (vijandRange[i].x > 1440)
+      if (vijandRange[i].x > 1515)
         vijandBlokInSpawn = true;
 
       vijandRange[i].loopt = !vijandRange[i].aanraken();
@@ -657,7 +657,7 @@ function draw() {
       vijandHeavy[i].plaats_heavy();
       vijandHeavy[i].lopen(-5, 0);
 
-      if (vijandHeavy[i].x > 1440)
+      if (vijandHeavy[i].x > 1515)
         vijandBlokInSpawn = true;
 
       vijandHeavy[i].loopt = !vijandHeavy[i].aanraken();
