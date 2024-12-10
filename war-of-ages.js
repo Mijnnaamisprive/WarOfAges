@@ -101,6 +101,7 @@ aanraken() {
 class Melee {
   constructor() {
     this.x = 180;
+        this.loopt = true;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -242,6 +243,7 @@ class VijandMelee extends Melee {
 class Range {
   constructor() {
     this.x = 180;
+        this.loopt = true;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
