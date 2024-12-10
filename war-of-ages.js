@@ -541,7 +541,7 @@ function setup() {
   spelerHeavyLopen = loadImage('spelerHeavyLopen.gif');
   vijandHeavyLopen = loadImage('vijandHeavyLopen.gif');
   spelerBasis = loadImage('spelerBasis.gif');
-  vijandBasis = loadImage('vijandBasis.gif');
+  vijandBasis = loadImage('VijandBasis.gif');
   achtergrond = loadImage('achtergrond.jpg');
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
