@@ -98,7 +98,7 @@ aanraken() {
 
 class Melee {
   constructor() {
-    this.x = 175;
+    this.x = 180;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -179,7 +179,7 @@ class Melee {
 class VijandMelee extends Melee {
   constructor() {
     super();
-    this.x = 1545;
+    this.x = 1540;
     this.closestBlok.x = -99999;
   }
 
@@ -240,7 +240,7 @@ class VijandMelee extends Melee {
 
 class Range {
   constructor() {
-    this.x = 175;
+    this.x = 180;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -322,7 +322,7 @@ class Range {
 class VijandRange extends Range {
   constructor() {
     super();
-    this.x = 1545;
+    this.x = 1540;
   }
 
   attack = () => {
@@ -394,7 +394,7 @@ class VijandRange extends Range {
 
 class Heavy {
   constructor() {
-    this.x = 300;
+    this.x = 180;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -486,8 +486,8 @@ class Heavy {
 
 class VijandHeavy extends Heavy {
   constructor() {
-    super(200 + 100);
-    this.x = 2380;
+    super();
+    this.x = 1540;
   }
 
   plaats_heavy() {
@@ -617,10 +617,10 @@ function draw() {
   let vijandBlokInSpawn = false;
   fill("black");
   textSize(50);
-  text("$" + Geld, 1880, 100);
+  text("$" + Geld, 1340, 100);
   fill("red");
   textSize(50);
-  text("Health: " + basis.hp, 2500, 175);
+  text("Health: " + basis.hp, 1340, 175);
 
   basis.plaats_basis_slaandoos();
   basis.plaats_basis();
