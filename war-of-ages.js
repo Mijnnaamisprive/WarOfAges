@@ -37,11 +37,12 @@ class Basis {
       console.log(touching);
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+      if ((bloksAreTouching(vijandBasis, this) ||
+        (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if (bloksAreTouching(vijandBasis, this) ||
+      } else if (
         (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -77,14 +78,14 @@ aanraken() {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (bloksAreTouching(basis, this) ||
+      if (
         (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
         console.log(this.vechten);
-      }else if (
+      }else if ((bloksAreTouching(basis, this) ||
                  (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -152,11 +153,12 @@ class Melee {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+      if ((vijandBasis, this) ||
+        (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if ((vijandBasis, this) ||
+      } else if (
         (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -220,13 +222,13 @@ class VijandMelee extends Melee {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((basis, this) ||
+      if (
         (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
-      } else if (
+      } else if ((basis, this) ||
                  (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -293,12 +295,12 @@ class Range {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (
+      if ((vijandBasis, this) ||
           (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if ((vijandBasis, this) ||
+      } else if (
         (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -371,13 +373,13 @@ class VijandRange extends Range {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((basis, this) ||
+      if (
         (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
-      } else if (
+      } else if ((basis, this) ||
                  (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -435,12 +437,12 @@ class Heavy {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (
+      if ((vijandBasis, this) ||
           (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if ((vijandBasis, this) ||
+      } else if (
         (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -513,13 +515,13 @@ class VijandHeavy extends Heavy {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if ((basis, this) ||
+      if (
         (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
-      } else if (
+      } else if ((basis, this) ||
                  (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -627,7 +629,7 @@ function draw() {
       if (melee[i].x < 280)
         blokInSpawn = true;
 
-      melee[i].loopt = !melee[i].touching();
+      melee[i].loopt = !melee[i].aanraken();
     }
     if (range[i].zichtbaar) {
       range[i].plaats_range();
@@ -636,7 +638,7 @@ function draw() {
       if (range[i].x < 280)
         blokInSpawn = true;
 
-      range[i].loopt = !range[i].touching();
+      range[i].loopt = !range[i].aanraken();
     }
 
     if (heavy[i].zichtbaar) {
@@ -646,7 +648,7 @@ function draw() {
       if (heavy[i].x < 280)
         blokInSpawn = true;
 
-      heavy[i].loopt = !heavy[i].touching();
+      heavy[i].loopt = !heavy[i].aanraken();
     }
 
     if (vijandMelee[i].zichtbaar) {
@@ -656,7 +658,7 @@ function draw() {
       if (vijandMelee[i].x > 1515)
         vijandBlokInSpawn = true;
 
-      vijandMelee[i].loopt = !vijandMelee[i].touching();
+      vijandMelee[i].loopt = !vijandMelee[i].aanraken();
     }
 
     if (vijandRange[i].zichtbaar) {
@@ -666,7 +668,7 @@ function draw() {
       if (vijandRange[i].x > 1515)
         vijandBlokInSpawn = true;
 
-      vijandRange[i].loopt = !vijandRange[i].touching();
+      vijandRange[i].loopt = !vijandRange[i].aanraken();
     }
     if (vijandHeavy[i].zichtbaar) {
       vijandHeavy[i].plaats_heavy();
@@ -675,7 +677,7 @@ function draw() {
       if (vijandHeavy[i].x > 1515)
         vijandBlokInSpawn = true;
 
-      vijandHeavy[i].loopt = !vijandHeavy[i].touching();
+      vijandHeavy[i].loopt = !vijandHeavy[i].aanraken();
     }
   }
 
