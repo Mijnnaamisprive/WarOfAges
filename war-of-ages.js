@@ -446,7 +446,7 @@ class Heavy {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 730,  * this.hp, 20);
+      rect(this.x, this.y + 730, 2 * this.hp, 20);
     }
   }
 
