@@ -34,7 +34,8 @@ class Basis {
     aanraken() {
     let touching = false;
       console.log(this.vechten);
-      console.log(this.touching);
+      console.log(this.aanraken);
+      console.log(touching);
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
       if ((melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
