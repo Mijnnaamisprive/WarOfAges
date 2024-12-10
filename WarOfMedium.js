@@ -402,7 +402,7 @@ class VijandRange extends Range {
         
         return resultaat;
     }
-
+}
 class Heavy {
   constructor() {
     this.x = 180;
