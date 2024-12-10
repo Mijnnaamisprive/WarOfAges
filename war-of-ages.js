@@ -16,7 +16,7 @@ class Basis {
     this.lose = false;
     this.hp = 100;
     this.vechten = false;
-    this.x = 50;
+    this.x = 75;
   }
 
   attack = () => {
@@ -45,7 +45,7 @@ class Basis {
     
   plaats_basis_slaandoos() {
     fill("black");
-    rect(this.x, 800, 100, 100);
+    rect(this.x, 775, 100, 100);
   }
 
   plaats_basis() {
@@ -57,7 +57,7 @@ class Basis {
 class VijandBasis extends Basis {
   constructor() {
     super();
-    this.x = 2480;
+    this.x = 1545;
   }
 
   attack = () => {
@@ -87,18 +87,18 @@ aanraken() {
 
   plaats_basis_slaandoos() {
     fill("white");
-    rect(this.x, 800, 100, 100);
+    rect(this.x, 775, 100, 100);
   }
 
   plaats_basis() {
     fill("white");
-    rect(1720, 725, 175, 175);
+    rect(1720, 700, 175, 175);
   }
 }
 
 class Melee {
   constructor() {
-    this.x = 150;
+    this.x = 175;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -160,12 +160,11 @@ class Melee {
   plaats_melee() {
     fill("red");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 650 &&
-        mouseY < this.y + 750) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
-      rect(this.x, this.y + 750, 100, 20);
+      rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 750, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
     }
   }
 
@@ -180,7 +179,7 @@ class Melee {
 class VijandMelee extends Melee {
   constructor() {
     super();
-    this.x = 1800;
+    this.x = 1545;
     this.closestBlok.x = -99999;
   }
 
@@ -230,19 +229,18 @@ class VijandMelee extends Melee {
   plaats_melee() {
     fill("red");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 650 &&
-        mouseY < this.y + 750) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
-      rect(this.x, this.y + 750, 100, 20);
+      rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 750, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 730, 3.33 * this.hp, 20);
     }
   }
 }
 
 class Range {
   constructor() {
-    this.x = 300;
+    this.x = 175;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -258,14 +256,11 @@ class Range {
       this.closestBlok.x = 99999;
 
     for (let i = 0; i < 999; i++) {
-      if (vijandMelee[i].zichtbaar && Math.abs(vijandMelee[i].x - this.x) <
-                                          Math.abs(this.closestBlok.x - this.x))
+      if (vijandMelee[i].zichtbaar && Math.abs(vijandMelee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = vijandMelee[i];
-      if (vijandRange[i].zichtbaar && Math.abs(vijandRange[i].x - this.x) <
-                                          Math.abs(this.closestBlok.x - this.x))
+      if (vijandRange[i].zichtbaar && Math.abs(vijandRange[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = vijandRange[i];
-      if (vijandHeavy[i].zichtbaar && Math.abs(vijandHeavy[i].x - this.x) <
-                                          Math.abs(this.closestBlok.x - this.x))
+      if (vijandHeavy[i].zichtbaar && Math.abs(vijandHeavy[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = vijandHeavy[i];
       if (vijandBasis.x < this.closestBlok.x)
         this.closestBlok = vijandBasis;
@@ -290,19 +285,13 @@ class Range {
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
       if (bloksAreTouching(basis, this) ||
-          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar &&
-           bloksAreTouching(this, melee[i])) ||
-          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar &&
-           bloksAreTouching(this, range[i])) ||
-          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar &&
-           bloksAreTouching(this, heavy[i]))) {
+          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
+          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
+          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar &&
-                  bloksAreTouching(this, vijandMelee[i])) ||
-                 (this !== vijandRange[i] && vijandRange[i].zichtbaar &&
-                  bloksAreTouching(this, vijandRange[i])) ||
-                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar &&
-                  bloksAreTouching(this, vijandHeavy[i]))) {
+      } else if ((this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
+                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
+                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
         this.vechten = true;
         touching = true;
       }
@@ -313,12 +302,11 @@ class Range {
   plaats_range() {
     image(spelerRangedLopen, this.x, this.y + 775, 100, 100);
 
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
-        mouseY < this.y + 650) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
-      rect(this.x, this.y + 750, 100, 20);
+      rect(this.x, this.y + 730, 100, 20);
       fill("red");
-      rect(this.x, this.y + 750, 5 * this.hp, 20);
+      rect(this.x, this.y + 730, 5 * this.hp, 20);
     }
   }
 
@@ -334,7 +322,7 @@ class Range {
 class VijandRange extends Range {
   constructor() {
     super();
-    this.x = 2380;
+    this.x = 1545;
   }
 
   attack = () => {
@@ -367,8 +355,8 @@ class VijandRange extends Range {
   plaats_range() {
     fill("green");
     rect(this.x, this.y + 775, 100, 100);
-    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
-        mouseY < this.y + 650) {
+    if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 &&
+        mouseY < this.y + 875) {
       fill("black");
       rect(this.x, this.y + 750, 100, 20);
       fill("red");
