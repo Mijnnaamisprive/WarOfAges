@@ -7,7 +7,14 @@ vijandHeavyNummer = 0;
 hoeveelQueue = 0;
 vijandHoeveelQueue = 0;
 Geld = 5000;
+spelerMeleeLopen = null;
+vijandMeleeLopen = null;
 spelerRangedLopen = null;
+vijandRangedLopen = null;
+spelerHeavyLopen = null;
+vijandHeavyLopen = null;
+spelerBasis = null;
+vijandBasis = null;
 achtergrond = null;
 
 class Basis {
@@ -50,8 +57,7 @@ class Basis {
   }
 
   plaats_basis() {
-    fill("black");
-    rect(0, 700, 175, 175);
+    image(spelerBasis, 0, 700, 175, 175);
   }
 }
 
@@ -93,15 +99,14 @@ aanraken() {
   }
 
   plaats_basis() {
-    fill("white");
-    rect(1720, 700, 175, 175);
+    image(vijandBasis, 1720, 700, 175, 175);
   }
 }
 
 class Melee {
   constructor() {
     this.x = 180;
-        this.loopt = true;
+    this.loopt = true;
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
@@ -161,8 +166,7 @@ class Melee {
   }
 
   plaats_melee() {
-    fill("red");
-    rect(this.x, this.y + 775, 100, 100);
+    image(spelerMeleeLopen, this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
@@ -230,8 +234,7 @@ class VijandMelee extends Melee {
   }
 
   plaats_melee() {
-    fill("red");
-    rect(this.x, this.y + 775, 100, 100);
+  image(vijandMeleeLopen, this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
@@ -351,8 +354,7 @@ class VijandRange extends Range {
   };
 
   plaats_range() {
-    fill("green");
-    rect(this.x, this.y + 775, 100, 100);
+    image(vijandRangedLopen, this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
@@ -444,8 +446,7 @@ class Heavy {
   }
 
   plaats_heavy() {
-    fill("purple");
-    rect(this.x, this.y + 775, 100, 100);
+    image(spelerHeavyLopen, this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
@@ -469,8 +470,7 @@ class VijandHeavy extends Heavy {
   }
 
   plaats_heavy() {
-    fill("purple");
-    rect(this.x, this.y + 775, 100, 100);
+  image(vijandHeavyLopen, this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
       fill("black");
       rect(this.x, this.y + 730, 100, 20);
@@ -534,8 +534,15 @@ let vijandBasis = new VijandBasis();
 let spawnQueue = [];
 
 function setup() {
-  achtergrond = loadImage('Achtergrond.jpg');
+  spelerMeleeLopen = loadImage('spelerMeleeLopen.gif');
+  vijandMeleeLopen = loadImage('vijandMeleeLopen.gif');
   spelerRangedLopen = loadImage('spelerRangedLopen.gif');
+  vijandRangedLopen = loadImage('vijandRangedLopen.gif');
+  spelerHeavyLopen = loadImage('spelerHeavyLopen.gif');
+  vijandHeavyLopen = loadImage('vijandHeavyLopen.gif');
+  spelerBasis = loadImage('spelerBasis.gif');
+  vijandBasis = loadImage('vijandBasis.gif');
+  achtergrond = loadImage('achtergrond.jpg');
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
 
