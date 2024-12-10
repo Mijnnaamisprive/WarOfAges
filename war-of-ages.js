@@ -95,11 +95,11 @@ aanraken() {
 
   plaats_basis_slaandoos() {
     fill("white");
-    rect(this.x, 700, 100, 100);
+    rect(this.x, 775, 100, 100);
   }
 
   plaats_basis() {
-    image(vijandBasisFoto, 1420, 700, 175, 175);
+    image(vijandBasisFoto, 1795, 700, 175, 175);
   }
 }
 
@@ -540,8 +540,8 @@ function setup() {
   vijandRangedLopen = loadImage('vijandRangedLopen.gif');
   spelerHeavyLopen = loadImage('spelerHeavyLopen.gif');
   vijandHeavyLopen = loadImage('vijandHeavyLopen.gif');
-  spelerBasisFoto = loadImage('spelerBasis.gif');
-  vijandBasisFoto = loadImage('vijandBasis.gif');
+  spelerBasisFoto = loadImage('sasis.gif');
+  vijandBasisFoto = loadImage('vasis.gif');
   achtergrond = loadImage('achtergrond.jpg');
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
