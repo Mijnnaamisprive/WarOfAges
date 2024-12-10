@@ -76,7 +76,7 @@ aanraken() {
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
         this.vechten = true;
-        (bloksAreTouching(basis, this) ||
+       else if (bloksAreTouching(basis, this) ||
                  (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
