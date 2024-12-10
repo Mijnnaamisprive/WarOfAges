@@ -733,13 +733,13 @@ function draw() {
     background("black");
     fill("red");
     textSize(100);
-    text("Game Over", 850, 450);
+    text("Game Over", 800, 425);
   }
   if (vijandBasis.win == true) { //Als win waar wordt dan komt dit scherm C
     background("black");
     fill("green");
     textSize(100);
-    text("You Win", 850, 450);
+    text("You Win", 800, 425);
   }
 }
 
