@@ -29,7 +29,7 @@ function slaanDoos(vriendBlok, blok) { //Houdt bij of welke blok in range zit C
 
 class Basis { 
   constructor() {
-    this.win = false;
+    this.win = true;
     this.lose = false;
     this.hp = 100;
     this.vechten = false;
