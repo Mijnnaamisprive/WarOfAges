@@ -99,7 +99,7 @@ aanraken() {
   }
 
   plaats_basis() {
-    image(vijandBasisFoto, 1795, 700, 175, 175);
+    image(vijandBasisFoto, 1645, 700, 175, 175);
   }
 }
 
@@ -584,6 +584,8 @@ function bloksAreTouching(blok1, blok2) {
 }
 
 function draw() {
+    basis.plaats_basis_slaandoos();
+  vijandBasis.plaats_basis_slaandoos();
   image(achtergrond, 0, 0, 1895, 925);
   let blokInSpawn = false;
   let vijandBlokInSpawn = false;
@@ -594,11 +596,8 @@ function draw() {
   textSize(50);
   text("Health: " + basis.hp, 1600, 175);
 
-  basis.plaats_basis_slaandoos();
   basis.plaats_basis();
-  vijandBasis.plaats_basis_slaandoos();
   vijandBasis.plaats_basis();
-
   basis.aanraken();
   vijandBasis.aanraken();
 
