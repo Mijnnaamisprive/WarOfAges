@@ -217,7 +217,7 @@ class VijandMelee extends Melee {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (basis, this) ||
+      if ((basis, this) ||
         (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
@@ -368,7 +368,7 @@ class VijandRange extends Range {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (basis, this) ||
+      if ((basis, this) ||
         (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
@@ -437,7 +437,7 @@ class Heavy {
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
         touching = true;
-      } else if (vijandBasis, this) ||
+      } else if ((vijandBasis, this) ||
         (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
                  (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
                  (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
@@ -510,7 +510,7 @@ class VijandHeavy extends Heavy {
     let touching = false;
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
-      if (basis, this) ||
+      if ((basis, this) ||
         (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
           (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
