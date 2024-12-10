@@ -594,7 +594,7 @@ function draw() {
   textSize(50);
   text("Health: " + basis.hp, 1600, 175);
 
-  basis.plaat_vijand_basis();
+  basis.plaat_basis_slaandoos();
   basis.plaats_basis();
   vijandBasis.plaats_basis_slaandoos();
   vijandBasis.plaats_basis();
