@@ -17,12 +17,23 @@ spelerBasisFoto = null;
 vijandBasisFoto = null;
 achtergrond = null;
 
+function slaanDoos(vriendBlok, blok) {
+    if(vriendBlok instanceof VijandBasis ||
+       vriendBlok instanceof VijandMelee ||
+       vriendBlok instanceof VijandRange ||
+       vriendBlok instanceof VijandHeavy)
+        return vriendBlok != blok && blok.zichtbaar && vriendBlok.x > blok.x && vriendBlok.x <= blok.x + 100;
+
+    return vriendBlok != blok && blok.zichtbaar && vriendBlok.x < blok.x && vriendBlok.x + 100 >= blok.x;
+}
+
 class Basis { 
   constructor() {
     this.win = false;
     this.lose = false;
     this.hp = 100;
     this.vechten = false;
+    this.zichtbaar = true;
     this.x = 75;
   }
 
@@ -32,24 +43,25 @@ class Basis {
   };
 
     aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) { //Dit houd bij of blokken elkaar raken C
-      if (bloksAreTouching(vijandBasis, this) ||
-        (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-      } else if (
-        (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        this.vechten = true;
-        touching = true;
-      }
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
+
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
     }
-    return touching;
-  }
     
   plaats_basis_slaandoos() { //Zorgt dat de basis ook aangevallen kan worden C
     fill("black");
@@ -72,26 +84,26 @@ class VijandBasis extends Basis {
       this.win = true;
   };
 
-aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) {
-      if (
-        (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-        this.vechten = true;
-        console.log(this.vechten);
-      }else if (bloksAreTouching(basis, this) ||
-                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        touching = true;
-      }
+    aanraken() {
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
+
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
     }
-    return touching;
-  }
 
 
   plaats_basis_slaandoos() {
@@ -148,25 +160,26 @@ class Melee {
     }
   }
 
-  aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) {
-      if ((vijandBasis, this) ||
-        (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-      } else if (
-        (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        this.vechten = true;
-        touching = true;
-      }
+    aanraken() {
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
+
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
     }
-    return touching;
-  }
 
   plaats_melee() {
     image(spelerMeleeLopen, this.x, this.y + 775, 100, 100);
@@ -217,26 +230,26 @@ class VijandMelee extends Melee {
     }
   };
 
-  aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) {
-      if (
-        (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-        this.vechten = true;
-      } else if ((basis, this) ||
-                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        touching = true;
-      }
-    }
-    return touching;
-  }
+    aanraken() {
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
 
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
+    }
   plaats_melee() {
   image(vijandMeleeLopen, this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 775 && mouseY < this.y + 875) {
@@ -290,25 +303,26 @@ class Range {
     }
   }
 
-  aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) {
-      if ((vijandBasis, this) ||
-          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-      } else if (
-        (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        this.vechten = true;
-        touching = true;
-      }
+    aanraken() {
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
+
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
     }
-    return touching;
-  }
 
   plaats_range() {
     image(spelerRangedLopen, this.x, this.y + 775, 100, 100);
@@ -368,26 +382,26 @@ class VijandRange extends Range {
     }
   }
   
-  aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) {
-      if (
-        (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-        this.vechten = true;
-      } else if ((basis, this) ||
-                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        touching = true;
-      }
+    aanraken() {
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
+
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
     }
-    return touching;
-  }
-}
 
 class Heavy {
   constructor() {
@@ -432,25 +446,26 @@ class Heavy {
     }
   }
 
-  aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) {
-      if ((vijandBasis, this) ||
-          (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (heavy[i].x >= this.x && this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-      } else if (
-        (this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        this.vechten = true;
-        touching = true;
-      }
+    aanraken() {
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
+
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
     }
-    return touching;
-  }
 
   plaats_heavy() {
     image(spelerHeavyLopen, this.x, this.y + 775, 100, 100);
@@ -510,25 +525,26 @@ class VijandHeavy extends Heavy {
     }
   };
 
-  aanraken() {
-    let touching = false;
-    this.vechten = false;
-    for (let i = 0; i < 999; i++) {
-      if (
-        (this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
-          (this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
-          (this !== heavy[i] && heavy[i].zichtbaar && bloksAreTouching(this, heavy[i]))) {
-        touching = true;
-        this.vechten = true;
-      } else if ((basis, this) ||
-                 (vijandMelee[i].x <= this.x && this !== vijandMelee[i] && vijandMelee[i].zichtbaar && bloksAreTouching(this, vijandMelee[i])) ||
-                 (vijandRange[i].x <= this.x && this !== vijandRange[i] && vijandRange[i].zichtbaar && bloksAreTouching(this, vijandRange[i])) ||
-                 (vijandHeavy[i].x <= this.x && this !== vijandHeavy[i] && vijandHeavy[i].zichtbaar && bloksAreTouching(this, vijandHeavy[i]))) {
-        touching = true;
-      }
+    aanraken() {
+        let resultaat = false;
+    
+        for(let i = 0; i < 999; i++) {
+            if(slaanDoos(this, melee[i]) ||
+               slaanDoos(this, range[i]) ||
+               slaanDoos(this, heavy[i]) ||
+               slaanDoos(this, vijandMelee[i]) ||
+               slaanDoos(this, vijandRange[i]) ||
+               slaanDoos(this, vijandHeavy[i])) {
+                resultaat = true;
+            }
+        }
+
+        if(slaanDoos(this, basis) ||
+           slaanDoos(this, vijandBasis))
+            resultaat = true;
+        
+        return resultaat;
     }
-    return touching;
-  }
 }
 
 let melee = []; //Zorgt ervoor dat deze classes kunnen gebruikt kunnen worden C
