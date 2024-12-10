@@ -102,12 +102,12 @@ aanraken() {
 
   plaats_basis_slaandoos() {
     fill("white");
-    rect(this.x, 400, 100, 100);
+    rect(this.x, 775, 100, 100);
   }
 
   plaats_basis() {
     fill("white");
-    rect(1745, 350, 150, 150);
+    rect(1745, 725, 150, 150);
   }
 }
 
@@ -180,13 +180,13 @@ class Melee {
 
   plaats_melee() {
     fill("red");
-    rect(this.x, this.y + 550, 100, 100);
+    rect(this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
         mouseY < this.y + 650) {
       fill("black");
-      rect(this.x, this.y + 510, 100, 20);
+      rect(this.x, this.y + 750, 100, 20);
       fill("red");
-      rect(this.x, this.y + 510, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 750, 3.33 * this.hp, 20);
     }
   }
 
@@ -263,13 +263,13 @@ class VijandMelee extends Melee {
 
   plaats_melee() {
     fill("red");
-    rect(this.x, this.y + 550, 100, 100);
+    rect(this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
         mouseY < this.y + 650) {
       fill("black");
-      rect(this.x, this.y + 510, 100, 20);
+      rect(this.x, this.y + 750, 100, 20);
       fill("red");
-      rect(this.x, this.y + 510, 3.33 * this.hp, 20);
+      rect(this.x, this.y + 750, 3.33 * this.hp, 20);
     }
   }
 }
@@ -345,14 +345,14 @@ class Range {
   }
 
   plaats_range() {
-    image(spelerRangedLopen, this.x, this.y + 550, 100, 100);
+    image(spelerRangedLopen, this.x, this.y + 775, 100, 100);
 
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
         mouseY < this.y + 650) {
       fill("black");
-      rect(this.x, this.y + 510, 100, 20);
+      rect(this.x, this.y + 750, 100, 20);
       fill("red");
-      rect(this.x, this.y + 510, 5 * this.hp, 20);
+      rect(this.x, this.y + 750, 5 * this.hp, 20);
     }
   }
 
@@ -400,13 +400,13 @@ class VijandRange extends Range {
 
   plaats_range() {
     fill("green");
-    rect(this.x, this.y + 550, 100, 100);
+    rect(this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
         mouseY < this.y + 650) {
       fill("black");
-      rect(this.x, this.y + 510, 100, 20);
+      rect(this.x, this.y + 750, 100, 20);
       fill("red");
-      rect(this.x, this.y + 510, 5 * this.hp, 20);
+      rect(this.x, this.y + 750, 5 * this.hp, 20);
     }
   }
   aanraken() {
@@ -511,13 +511,13 @@ class Heavy {
 
   plaats_heavy() {
     fill("purple");
-    rect(this.x, this.y + 550, 100, 100);
+    rect(this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
         mouseY < this.y + 650) {
       fill("black");
-      rect(this.x, this.y + 510, 100, 20);
+      rect(this.x, this.y + 750, 100, 20);
       fill("red");
-      rect(this.x, this.y + 510, 2 * this.hp, 20);
+      rect(this.x, this.y + 750, 2 * this.hp, 20);
     }
   }
 
@@ -538,13 +538,13 @@ class VijandHeavy extends Heavy {
 
   plaats_heavy() {
     fill("purple");
-    rect(this.x, this.y + 550, 100, 100);
+    rect(this.x, this.y + 775, 100, 100);
     if (mouseX > this.x && mouseX < this.x + 100 && mouseY > this.y + 550 &&
         mouseY < this.y + 650) {
       fill("black");
-      rect(this.x, this.y + 510, 100, 20);
+      rect(this.x, this.y + 750, 100, 20);
       fill("red");
-      rect(this.x, this.y + 510, 2 * this.hp, 20);
+      rect(this.x, this.y + 750, 2 * this.hp, 20);
     }
   }
 
