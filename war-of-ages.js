@@ -57,7 +57,7 @@ class Basis {
   }
 
   plaats_basis() {
-    image(spelerBasisFoto, 0, 700, 175, 175);
+    image(spelerRangedLopen, 0, 700, 175, 175);
   }
 }
 
@@ -594,7 +594,7 @@ function draw() {
   textSize(50);
   text("Health: " + basis.hp, 1600, 175);
 
-  basis.plaats_basis_slaandoos();
+  basis.plaat_vijand_basis();
   basis.plaats_basis();
   vijandBasis.plaats_basis_slaandoos();
   vijandBasis.plaats_basis();
