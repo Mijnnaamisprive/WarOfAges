@@ -1,4 +1,4 @@
-meleeNummer = 0;
+meleeNummer = 0; //Dit zorgt dat soldaten gespawnd worden en in een queue zitten C
 rangeNummer = 0;
 heavyNummer = 0;
 vijandMeleeNummer = 0;
@@ -7,7 +7,7 @@ vijandHeavyNummer = 0;
 hoeveelQueue = 0;
 vijandHoeveelQueue = 0;
 Geld = 5000;
-spelerMeleeLopen = null;
+spelerMeleeLopen = null; //hierdoor worden plaatjes geladen A
 vijandMeleeLopen = null;
 spelerRangedLopen = null;
 vijandRangedLopen = null;
@@ -17,7 +17,7 @@ spelerBasisFoto = null;
 vijandBasisFoto = null;
 achtergrond = null;
 
-class Basis {
+class Basis { 
   constructor() {
     this.win = false;
     this.lose = false;
@@ -26,17 +26,15 @@ class Basis {
     this.x = 75;
   }
 
-  attack = () => {
+  attack = () => { //0 hp en je verliest C
     if (this.hp <= 0)
       this.lose = true;
   };
 
     aanraken() {
     let touching = false;
-      console.log(this.vechten);
-      console.log(touching);
     this.vechten = false;
-    for (let i = 0; i < 999; i++) {
+    for (let i = 0; i < 999; i++) { //Dit houd bij of blokken elkaar raken C
       if (bloksAreTouching(vijandBasis, this) ||
         (melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
           (range[i].x >= this.x && this !== range[i] && range[i].zichtbaar && bloksAreTouching(this, range[i])) ||
@@ -53,23 +51,23 @@ class Basis {
     return touching;
   }
     
-  plaats_basis_slaandoos() {
+  plaats_basis_slaandoos() { //Zorgt dat de basis ook aangevallen kan worden C
     fill("black");
     rect(this.x, 775, 100, 100);
   }
 
-  plaats_basis() {
+  plaats_basis() { //laad het plaatje A
     image(spelerBasisFoto, 0, 700, 175, 175);
   }
 }
 
 class VijandBasis extends Basis {
   constructor() {
-    super();
+    super(); //Maakt een copie van de variable in basis C
     this.x = 1720;
   }
 
-  attack = () => {
+  attack = () => { //Als hp 0 is win je
     if (this.hp <= 0)
       this.win = true;
   };
@@ -109,15 +107,15 @@ aanraken() {
 class Melee {
   constructor() {
     this.x = 380;
-    this.loopt = true;
+    this.loopt = true; //Zorgt ervoor dat een soldaat loopt C
     this.y = 0;
     this.menux = 0;
     this.menuy = 0;
-    this.zichtbaar = false;
+    this.zichtbaar = false; //Houdt blokken ontzicht tot ze gespawnd worden C
     this.hp = 30;
-    this.vechten = false;
-    this.closestBlok = {x : 99999};
-    this.rangeLength = 0;
+    this.vechten = false; //Houdt bij of ze in een gevecht zijn C
+    this.closestBlok = {x : 99999}; //Kijkt welk blok het dichtsbijzijnds is C
+    this.rangeLength = 0; //Iedere soldaat houdt een range aanval bij, maar melee kan dat niet dus het is 0 C
   }
 
   attack = () => {
@@ -125,7 +123,8 @@ class Melee {
       this.closestBlok.x = 99999;
 
     for (let i = 0; i < 999; i++) {
-      if (vijandMelee[i].zichtbaar && Math.abs(vijandMelee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
+      if (vijandMelee[i].zichtbaar && Math.abs(vijandMelee[i].x - this.x) < Math.abs(this.closestBlok.x - this.x)) 
+//Als vijandMelee zichtbaar is en de afstand tussen vijandMelee en dit blok is kleiner dan die van dit blok en dichtbij, dan wordt vijandMelee de dichtbijzijnde C
         this.closestBlok = vijandMelee[i];
       if (vijandRange[i].zichtbaar && Math.abs(vijandRange[i].x - this.x) < Math.abs(this.closestBlok.x - this.x))
         this.closestBlok = vijandRange[i];
@@ -135,14 +134,14 @@ class Melee {
         this.closestBlok = vijandBasis;
     }
 
-    if (this.closestBlok.x <= this.x + this.rangeLength + 105)
+    if (this.closestBlok.x <= this.x + this.rangeLength + 105) // Als het dichtbijzijnde blok in 105 pixels is krijgt het damage C
       this.closestBlok.hp -= 10;
 
-    if (this.hp <= 0)
+    if (this.hp <= 0) // als de hp gelijk is aan 0 wordt het onzichtbaar/dood C
       this.zichtbaar = false;
   };
 
-  lopen(dx, dy) {
+  lopen(dx, dy) { //Zorgt ervoor dat het blok beweegt C
     if (this.loopt) {
       this.x += dx;
       this.y += dy;
@@ -179,11 +178,11 @@ class Melee {
     }
   }
 
-  plaats_mm() {
+  plaats_mm() { //Maakt een menu voor het spawnen van Melee soldaten C
     fill("red");
     rect(this.menux, this.menuy, 100, 50);
     this.zichtbaarM = true;
-    return (mouseX > this.menux && mouseX < this.menux + 100 && mouseY > this.menuy && mouseY < this.menuy + 50);
+    return (mouseX > this.menux && mouseX < this.menux + 100 && mouseY > this.menuy && mouseY < this.menuy + 50); //Kijkt waar jouw muis is en als je klikt op de menu spawnd het een soldaat C
   }
 }
 
@@ -212,7 +211,7 @@ class VijandMelee extends Melee {
     if (this.closestBlok.x >= this.x - this.rangeLength - 105)
       this.closestBlok.hp -= 10;
 
-    if (this.hp <= 0) {
+    if (this.hp <= 0) { //Als je de vijand versla krijg je 30 geld erbij C
       this.zichtbaar = false;
       Geld += 30;
     }
@@ -259,7 +258,7 @@ class Range {
     this.hp = 20;
     this.vechten = false;
     this.closestBlok = {x : 99999};
-    this.rangeLength = 150;
+    this.rangeLength = 150; //kan 150 pixels ver schieten wat 2 blokken raakt C
   }
 
   attack = () => {
@@ -355,7 +354,7 @@ class VijandRange extends Range {
 
     if (this.hp <= 0) {
       this.zichtbaar = false;
-      Geld += 30;
+      Geld += 45;
     }
   };
 
@@ -507,7 +506,7 @@ class VijandHeavy extends Heavy {
 
     if (this.hp <= 0) {
       this.zichtbaar = false;
-      Geld += 30;
+      Geld += 85;
     }
   };
 
@@ -532,7 +531,7 @@ class VijandHeavy extends Heavy {
   }
 }
 
-let melee = [];
+let melee = []; //Zorgt ervoor dat deze classes kunnen gebruikt kunnen worden C
 let range = [];
 let heavy = [];
 let basis = new Basis();
@@ -543,7 +542,7 @@ let vijandBasis = new VijandBasis();
 let spawnQueue = [];
 
 function setup() {
-  spelerMeleeLopen = loadImage('spelerMeleeLopen.gif');
+  spelerMeleeLopen = loadImage('spelerMeleeLopen.gif'); //laad de foto A
   vijandMeleeLopen = loadImage('vijandMeleeLopen.gif');
   spelerRangedLopen = loadImage('spelerRangedLopen.gif');
   vijandRangedLopen = loadImage('vijandRangedLopen.gif');
@@ -555,9 +554,9 @@ function setup() {
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
 
-  frameRate(10);
+  frameRate(10); //Zorgt dat alles kan veranderen en bewegen C
 
-  for (let i = 0; i < 999; i++) {
+  for (let i = 0; i < 999; i++) { //Zorgt dat deze gebruikt kan worden C
     melee.push(new Melee());
     range.push(new Range());
     heavy.push(new Heavy());
@@ -565,10 +564,10 @@ function setup() {
     vijandRange.push(new VijandRange());
     vijandHeavy.push(new VijandHeavy());
   }
-  setInterval(vechten, 1000);
+  setInterval(vechten, 1000);  //Doet elke seconden kijken of soldaten damage krijgen en spawned een vijand soldaat C
   setInterval(vijandMousePressed, 1000);
 }
-function vechten() {
+function vechten() {  //Als een soldaat zichtbaar is kan het aanvallen C
   for (let i = 0; i < 999; i++) {
     if (melee[i].zichtbaar)
       melee[i].attack();
@@ -587,18 +586,18 @@ function vechten() {
   vijandBasis.attack();
 }
 
-function bloksAreTouching(blok1, blok2) {
+function bloksAreTouching(blok1, blok2) { //Kijkt of blok 1 blok 2 raakt (wordt in aanraken spcifiek gemaakt) C
   return ((blok1.x + 105 >= blok2.x && blok1.x <= blok2.x) ||
           (blok2.x + 105 >= blok1.x && blok2.x <= blok1.x));
 }
 
 function draw() {
-    basis.plaats_basis_slaandoos();
+  basis.plaats_basis_slaandoos();
   vijandBasis.plaats_basis_slaandoos();
   image(achtergrond, 0, 0, 1895, 925);
-  let blokInSpawn = false;
+  let blokInSpawn = false; //Wordt gebruikt om te kijken of er een blok in spawn zit C
   let vijandBlokInSpawn = false;
-  fill("black");
+  fill("black"); //tekent geld en heath op scherm A
   textSize(50);
   text("$" + Geld, 1600, 100);
   fill("red");
