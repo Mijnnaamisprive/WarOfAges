@@ -57,7 +57,7 @@ class Basis {
   }
 
   plaats_basis() {
-    image(spelerRangedLopen, 0, 700, 175, 175);
+    image(spelerBasisFoto, 0, 700, 175, 175);
   }
 }
 
@@ -540,8 +540,8 @@ function setup() {
   vijandRangedLopen = loadImage('vijandRangedLopen.gif');
   spelerHeavyLopen = loadImage('spelerHeavyLopen.gif');
   vijandHeavyLopen = loadImage('vijandHeavyLopen.gif');
-  spelerBasisFoto = loadImage('spelerBasisFoto.gif');
-  vijandBasisFoto = loadImage('vijandBasisFoto.gif');
+  spelerBasisFoto = loadImage('spelerBasis.jpg');
+  vijandBasisFoto = loadImage('vijandBasis.jpg');
   achtergrond = loadImage('achtergrond.jpg');
   canvas = createCanvas(1895, 925);
   canvas.parent("processing");
