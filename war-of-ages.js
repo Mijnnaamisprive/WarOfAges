@@ -99,7 +99,7 @@ aanraken() {
   }
 
   plaats_basis() {
-    image(vijandBasisFoto, 1645, 700, 175, 175);
+    image(vijandBasisFoto, 1725, 700, 175, 175);
   }
 }
 
