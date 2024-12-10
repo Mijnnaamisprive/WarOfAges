@@ -17,7 +17,7 @@ spelerBasisFoto = null;
 vijandBasisFoto = null;
 achtergrond = null;
 
-function slaanDoos(vriendBlok, blok) {
+function slaanDoos(vriendBlok, blok) { //Houdt bij of welke blok in range zit C
     if(vriendBlok instanceof VijandBasis ||
        vriendBlok instanceof VijandMelee ||
        vriendBlok instanceof VijandRange ||
@@ -45,7 +45,7 @@ class Basis {
     aanraken() {
         let resultaat = false;
     
-        for(let i = 0; i < 999; i++) {
+        for(let i = 0; i < 999; i++) { //Kijkt welke blok in range van bais is C
             if(slaanDoos(this, melee[i]) ||
                slaanDoos(this, range[i]) ||
                slaanDoos(this, heavy[i]) ||
