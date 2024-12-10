@@ -35,7 +35,6 @@ class Basis {
     let touching = false;
       console.log(this.vechten);
       console.log(this.aanraken);
-      console.log(touching);
     this.vechten = false;
     for (let i = 0; i < 999; i++) {
       if ((melee[i].x >= this.x && this !== melee[i] && melee[i].zichtbaar && bloksAreTouching(this, melee[i])) ||
@@ -629,6 +628,7 @@ function draw() {
         blokInSpawn = true;
 
       melee[i].loopt = !melee[i].aanraken();
+      console.log(melee[i].aanraken)
     }
     if (range[i].zichtbaar) {
       range[i].plaats_range();
